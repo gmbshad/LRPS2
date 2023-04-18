@@ -1,0 +1,2 @@
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar qc libx86emitter.a CMakeFiles/x86emitter.dir/cpudetect.cpp.o CMakeFiles/x86emitter.dir/groups.cpp.o CMakeFiles/x86emitter.dir/jmp.cpp.o CMakeFiles/x86emitter.dir/legacy.cpp.o CMakeFiles/x86emitter.dir/legacy_sse.cpp.o CMakeFiles/x86emitter.dir/movs.cpp.o CMakeFiles/x86emitter.dir/simd.cpp.o CMakeFiles/x86emitter.dir/x86emitter.cpp.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib libx86emitter.a
