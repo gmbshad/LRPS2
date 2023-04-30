@@ -1,0 +1,2 @@
+/usr/bin/ar qcTP liblzo2.a CMakeFiles/lzo2.dir/minilzo.c.o
+/usr/bin/ranlib liblzo2.a

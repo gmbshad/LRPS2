@@ -1,0 +1,2 @@
+/usr/bin/ar qcTP libusb.a CMakeFiles/usb.dir/libusb/core.c.o CMakeFiles/usb.dir/libusb/descriptor.c.o CMakeFiles/usb.dir/libusb/hotplug.c.o CMakeFiles/usb.dir/libusb/io.c.o CMakeFiles/usb.dir/libusb/strerror.c.o CMakeFiles/usb.dir/libusb/sync.c.o CMakeFiles/usb.dir/libusb/os/linux_usbfs.c.o CMakeFiles/usb.dir/libusb/os/linux_netlink.c.o CMakeFiles/usb.dir/libusb/os/poll_posix.c.o CMakeFiles/usb.dir/libusb/os/threads_posix.c.o
+/usr/bin/ranlib libusb.a

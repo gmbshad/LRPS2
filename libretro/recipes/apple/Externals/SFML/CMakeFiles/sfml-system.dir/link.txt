@@ -1,0 +1,2 @@
+/usr/bin/ar qcTP libsfml-system.a CMakeFiles/sfml-system.dir/src/SFML/System/Err.cpp.o CMakeFiles/sfml-system.dir/src/SFML/System/String.cpp.o CMakeFiles/sfml-system.dir/src/SFML/System/Time.cpp.o
+/usr/bin/ranlib libsfml-system.a

@@ -1,0 +1,80 @@
+/*
+ *	Copyright (C) 2011-2011 Gregory hainaut
+ *	Copyright (C) 2007-2009 Gabest
+ *
+ *  This Program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2, or (at your option)
+ *  any later version.
+ *
+ *  This Program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with GNU Make; see the file COPYING.  If not, write to
+ *  the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA USA.
+ *  http://www.gnu.org/copyleft/gpl.html
+ *
+ */
+
+#pragma once
+
+#include "Pcsx2Types.h"
+
+#include "GLLoader.h"
+#include "../Common/GSTexture.h"
+
+namespace PboPool {
+	inline void Sync();
+
+	inline char* Map(u32 size);
+
+	void Init();
+	void Destroy();
+}
+
+class GSTextureOGL final : public GSTexture
+{
+	private:
+		GLuint m_texture_id;	 // the texture id
+		GLuint m_fbo_read;
+		bool m_clean;
+		bool m_generate_mipmap;
+
+		u8* m_local_buffer;
+		// Avoid alignment constrain
+		//GSVector4i m_r;
+		int m_r_x;
+		int m_r_y;
+		int m_r_w;
+		int m_r_h;
+		int m_layer;
+		int m_max_layer;
+
+		// internal opengl format/type/alignment
+		GLenum m_int_format;
+		GLenum m_int_type;
+		u32 m_int_shift;
+
+	public:
+		explicit GSTextureOGL(int type, int w, int h, int format, GLuint fbo_read, bool mipmap);
+		virtual ~GSTextureOGL();
+
+		bool Update(const GSVector4i& r, const void* data, int pitch, int layer = 0) final;
+		bool Map(GSMap& m, const GSVector4i* r = NULL, int layer = 0) final;
+		void Unmap() final;
+		void GenerateMipmap() final;
+
+		bool IsBackbuffer() { return m_type == GSTexture::Backbuffer; }
+		bool IsDss() { return m_type == GSTexture::DepthStencil; }
+
+		u32 GetID() final { return m_texture_id; }
+		bool HasBeenCleaned() { return m_clean; }
+		void WasAttached() { m_clean = false; }
+		void WasCleaned() { m_clean = true; }
+
+		void Clear(const void* data);
+		void Clear(const void* data, const GSVector4i& area);
+};
